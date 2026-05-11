@@ -48,7 +48,7 @@ type Project = {
   detail: string;
 };
 
-const storageKey = "profiledata:v2";
+const storageKey = "profiledata:v3";
 
 const initialProfile: Profile = {
   name: "Naveen Bhairi",
@@ -89,24 +89,24 @@ const initialProfile: Profile = {
   experience: [
     {
       id: "exp-1",
-      title: "React.js Frontend Developer",
-      company: "Cognizant - AlgoForge Trading",
+      title: "React.js Frontend Developer - Cognizant",
+      company: "AlgoForge Trading",
       period: "Jan 2024 - Mar 2026",
       detail:
         "Developed AlgoForge, a real-time algorithmic trading simulation platform that enables users to create, test, and analyze custom trading strategies through an interactive drag-and-drop workflow builder. Built using React.js, TypeScript, Redux Toolkit, and Socket.IO, the platform provides live market dashboards, historical backtesting analytics, advanced financial charting, and real-time paper trading interfaces with instant portfolio updates.Integrated TradingView Lightweight Charts for candlestick visualization and trade signal overlays, implemented analytics dashboards using Recharts, and optimized application performance through lazy loading, virtualization, memoization, and scalable real-time state management. The platform also includes Progressive Web App (PWA) support, secure authentication workflows, and cloud-based deployment using Firebase Hosting and Google Cloud services.",
     },
     {
       id: "exp-2",
-      title: "React.js Frontend Developer",
-      company: "Cognizant - Healthcare Management System",
+      title: "React.js Frontend Developer - Cognizant",
+      company: "Healthcare Management System",
       period: "Jul 2022 - Dec 2023",
       detail:
         "Built a scalable real-time Hospital & Healthcare Management System using React.js, TypeScript, Redux Toolkit, React Query, Tailwind CSS, and Socket.IO, supporting multiple clinical workflows including patient management, appointments, EHR, pharmacy, laboratory, billing, telemedicine, and emergency alerts with role-based access control and live real-time updates. Focused heavily on frontend architecture by implementing reusable component libraries, protected routing with JWT authentication, custom React hooks, Context API for global state sharing, React Hook Form with Zod validation, route-level code splitting using React.lazy and Suspense, skeleton loading screens, virtualized large data rendering, and optimized UI performance for complex healthcare dashboards handling real-time clinical data across departments.",
     },
     {
       id: "exp-3",
-      title: "Cybersecurity Analyst",
-      company: "Cognizant - Google Web Store",
+      title: "Cybersecurity Analyst - Cognizant",
+      company: "Google Web Store",
       period: "Oct 2021 - Jul 2022",
       detail:
         "Handled threat response across L1 triage and complex L0 escalations, investigated malicious browser extensions with Chrome DevTools and HTTP Toolkit, reverse-engineered obfuscated payloads, and supported SLA-driven incident workflows.",
@@ -116,16 +116,16 @@ const initialProfile: Profile = {
     {
       id: "project-3",
       name: "Profile Folio",
-      stack: "React.js, TypeScript, Tailwind CSS, localStorage",
+      stack: "React.js, TypeScript, Tailwind CSS, LocalStorage",
       detail:
-        "Personal profile workspace for maintaining professional details, skills, links, highlights, experience, project summaries, shareable profile text, and downloadable contact data.",
+        "Built a modern and responsive personal portfolio and resume builder using React, TypeScript, and Tailwind CSS, featuring an interactive UI for showcasing skills, projects, and professional experience. Implemented dynamic inline editing with localStorage persistence, enabling real-time content updates without backend integration. Designed a mobile-first glassmorphism-inspired interface with reusable components, integrated Lucide React icons, and added one-click PDF resume download functionality using Vite for optimized performance and development workflow.",
     },
     {
       id: "project-4",
       name: "Expense Manager",
-      stack: "React.js, JavaScript, API integration, responsive UI",
+      stack: "React.js, JavaScript, API integration, Responsive UI",
       detail:
-        "Focused personal finance tool for recording expenses, organizing transaction data, and improving day-to-day expense visibility through a clean web interface.",
+        "Developed a full-stack Expense Management application using the MERN stack to help users efficiently track income, expenses, and overall financial balance. Implemented features for creating, updating, deleting, and categorizing transactions with real-time balance, income, and expense calculations. Built a month-wise transaction management system with dynamic filtering and responsive UI for seamless user experience. Integrated secure authentication and admin-level access to manage users and monitor transaction data.",
     },
   ],
 };
@@ -195,10 +195,10 @@ function App() {
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+                <p className="text-s font-bold uppercase tracking-wider text-blue-600">
                   {profile.name}
                 </p>
-                <h1 className="truncate text-lg font-extrabold text-slate-900">
+                <h1 className="truncate text-lg font-bold text-slate-900">
                   Portfolio
                 </h1>
               </div>
@@ -289,11 +289,11 @@ function App() {
                       LinkedIn
                     </AnchorButton>
                     <button
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-slate-700 ring-1 ring-inset ring-slate-200 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:text-slate-900"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-extrabold text-slate-700 ring-1 ring-inset ring-slate-200 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:text-slate-900"
                       onClick={downloadResume}
                       type="button"
                     >
-                      <Download size={17} />
+                      <Download size={17} strokeWidth={3} />
                       Resume
                     </button>
                   </div>
