@@ -57,7 +57,7 @@ const initialProfile: Profile = {
   email: "naveen.bhairi123@gmail.com",
   phone: "+91 9398421298",
   summary:
-    "Frontend React.js Developer with hands-on experience building scalable enterprise web applications using React.js, Redux Toolkit, TypeScript, TanStack Query, Socket.IO, and modern dashboard libraries. Strong in reusable UI components, API integration, real-time data flows, authentication screens, responsive dashboards, and performance optimization.",
+    "Passionate Frontend React.js Developer focused on building scalable and high-performance enterprise web applications. Experienced in working with React.js, Redux Toolkit, TypeScript, TanStack Query, Socket.IO, and modern dashboard technologies to create responsive, user-friendly interfaces. Skilled in developing reusable UI components, integrating APIs, handling real-time data flows, implementing authentication systems, and optimizing application performance to deliver seamless user experiences.",
   
   github: "https://github.com/naveenbhairi",
   linkedin: "https://www.linkedin.com/in/naveen-bhairi-09b60b147/",
@@ -69,20 +69,17 @@ const initialProfile: Profile = {
     "Redux Toolkit",
     "TanStack Query",
     "React Hook Form",
-    "Zod",
     "React Router",
     "Socket.IO",
-    "Axios",
     "Tailwind CSS",
-    "Recharts",
-    "React Window",
-    "TradingView Charts",
-    "Jest",
     "React Testing Library",
+    "Rest APIs",
+    "JWT Authentication",
     "Node.js",
     "Express.js",
     "MongoDB",
-    "GCP",
+    "Github",
+    "Google Cloud Platform(GCP)",
   ],
   highlights: [
     "Built live stock and crypto dashboards that handled 5K+ concurrent real-time events with selective WebSocket subscriptions and virtualized rendering.",
@@ -96,7 +93,7 @@ const initialProfile: Profile = {
       company: "Cognizant - AlgoForge Trading",
       period: "Jan 2024 - Mar 2026",
       detail:
-        "Developed a trading platform with React.js, Redux Toolkit, TypeScript, TanStack Query, Socket.IO, TradingView Lightweight Charts, Recharts, and Axios. Built reusable UI components, live market dashboards, strategy marketplace filters, secure JWT and Google OAuth flows, 2FA screens, API service layers, error boundaries, toast notifications, and performance optimizations for high-volume real-time data.",
+        "Developed AlgoForge, a real-time algorithmic trading simulation platform that enables users to create, test, and analyze custom trading strategies through an interactive drag-and-drop workflow builder. Built using React.js, TypeScript, Redux Toolkit, and Socket.IO, the platform provides live market dashboards, historical backtesting analytics, advanced financial charting, and real-time paper trading interfaces with instant portfolio updates.Integrated TradingView Lightweight Charts for candlestick visualization and trade signal overlays, implemented analytics dashboards using Recharts, and optimized application performance through lazy loading, virtualization, memoization, and scalable real-time state management. The platform also includes Progressive Web App (PWA) support, secure authentication workflows, and cloud-based deployment using Firebase Hosting and Google Cloud services.",
     },
     {
       id: "exp-2",
@@ -104,7 +101,7 @@ const initialProfile: Profile = {
       company: "Cognizant - Healthcare Management System",
       period: "Jul 2022 - Dec 2023",
       detail:
-        "Contributed to a hospital management platform with role-based access, protected routing, JWT sessions, WebSocket event handling, React Context state, conditional clinical dashboards, reusable custom hooks, React Hook Form with Zod validation, route-level code splitting, and skeleton loading states for patient and appointment workflows.",
+        "Built a scalable real-time Hospital & Healthcare Management System using React.js, TypeScript, Redux Toolkit, React Query, Tailwind CSS, and Socket.IO, supporting multiple clinical workflows including patient management, appointments, EHR, pharmacy, laboratory, billing, telemedicine, and emergency alerts with role-based access control and live real-time updates. Focused heavily on frontend architecture by implementing reusable component libraries, protected routing with JWT authentication, custom React hooks, Context API for global state sharing, React Hook Form with Zod validation, route-level code splitting using React.lazy and Suspense, skeleton loading screens, virtualized large data rendering, and optimized UI performance for complex healthcare dashboards handling real-time clinical data across departments.",
     },
     {
       id: "exp-3",
@@ -136,7 +133,7 @@ const initialProfile: Profile = {
 const navItems = [
   { href: "#projects", icon: <ExternalLink size={17} />, label: "Projects" },
   { href: "#experience", icon: <Sparkles size={17} />, label: "Experience" },
-  { href: "#skills", icon: <Network size={17} />, label: "Skills" },
+  { href: "#skills", icon: <Network size={17} />, label: "Tech Stack" },
   { href: "#contact", icon: <Mail size={17} />, label: "Contact" },
 ];
 
@@ -359,7 +356,7 @@ function App() {
 
         <section className="grid gap-12 lg:grid-cols-[minmax(300px,0.9fr)_minmax(0,1.4fr)] lg:gap-16">
           <Panel
-            title="Skills"
+            title="Tech Stack"
             id="skills"
           >
             <div className="flex max-w-4xl flex-wrap gap-3">
