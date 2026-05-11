@@ -13,7 +13,7 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import profileImage from "./profile-photo.jpg";
 
 const resumePath = "/Naveen_Bhairi_ReactJs_Resume.pdf";
@@ -49,7 +49,7 @@ type Project = {
   detail: string;
 };
 
-const storageKey = "profiledata:v4";
+const storageKey = "profiledata:v5";
 
 const initialProfile: Profile = {
   name: "Naveen Bhairi",
@@ -94,6 +94,7 @@ const initialProfile: Profile = {
       items: [
         "Github",
         "Postman",
+        "VS Code",
         "Google Cloud Platform (GCP)",
       ],
     },
@@ -196,24 +197,24 @@ function App() {
   };
 
   return (
-    <main className="relative min-h-screen pb-8 text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <main className="relative min-h-screen pb-8 text-slate-900 selection:bg-sky-100 selection:text-sky-900">
       {/* Modern Grid Background with Ambient Glow */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-500 opacity-20 blur-[100px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-indigo-500 opacity-20 blur-[120px]"></div>
-        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-blue-400 opacity-20 blur-[100px]"></div>
+        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-sky-400 opacity-20 blur-[100px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-blue-400 opacity-20 blur-[120px]"></div>
+        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-sky-300 opacity-20 blur-[100px]"></div>
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
         <header className={`sticky top-4 z-50 mx-auto w-full bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-sm px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-md transition-transform group-hover:scale-105">
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
-                <p className="text-s font-bold uppercase tracking-wider text-blue-600">
+                <p className="text-s font-bold uppercase tracking-wider text-sky-500">
                   {profile.name}
                 </p>
                 <h1 className="truncate text-lg font-bold text-slate-900">
@@ -272,7 +273,8 @@ function App() {
           )}
         </header>
 
-        <section className="pt-4 lg:pt-8 scroll-mt-28" id="about">
+        <Reveal>
+          <section className="pt-4 lg:pt-8 scroll-mt-28" id="about">
           <div className="px-1 py-2 sm:px-2 lg:py-3">
               <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
                 <div className="min-w-0">
@@ -283,7 +285,7 @@ function App() {
                     value={profile.name}
                   />
                   <EditableText
-                    className="mt-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl"
+                    className="mt-6 bg-gradient-to-r from-sky-500 to-blue-500 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl"
                     value={profile.role}
                   />
                   <EditableText
@@ -358,7 +360,8 @@ function App() {
                 />
               </div>
           </div>
-        </section>
+          </section>
+        </Reveal>
 
         <Panel
           title="Tech Stack"
@@ -373,7 +376,7 @@ function App() {
                 <div className="flex flex-wrap gap-3">
                   {skillGroup.items.map((skill, index) => (
                     <span
-                      className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                      className="inline-flex items-center rounded-full bg-sky-50 px-4 py-1.5 text-sm font-medium text-sky-600 ring-1 ring-inset ring-sky-600/10"
                       key={`${skill}-${index}`}
                     >
                       {skill}
@@ -394,7 +397,7 @@ function App() {
                 className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50"
                 key={`${highlight}-${index}`}
               >
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-sky-500">
                   <Sparkles size={18} />
                 </div>
                 <p className="text-sm leading-relaxed text-slate-600">{highlight}</p>
@@ -415,11 +418,11 @@ function App() {
               >
                 <div>
                   <EditableText
-                    className="text-xl font-bold text-slate-900 transition-colors group-hover:text-blue-600"
+                    className="text-xl font-bold text-slate-900 transition-colors group-hover:text-sky-500"
                     value={project.name}
                   />
                   <EditableText
-                    className="mt-2 text-sm font-medium text-blue-600"
+                    className="mt-2 text-sm font-medium text-sky-500"
                     value={project.stack}
                   />
                   <EditableText
@@ -471,7 +474,7 @@ function App() {
                     />
                 <div className="mt-2 flex flex-wrap items-center gap-3">
                   <EditableText
-                    className="text-lg font-medium text-blue-600"
+                    className="text-lg font-medium text-sky-500"
                     value={currentExperience.company}
                   />
                   <span className="text-slate-300">&bull;</span>
@@ -498,7 +501,7 @@ function App() {
                     aria-label={`Show ${item.title}`}
                     className={`h-2 rounded-full transition-all ${
                       index === experiencePage
-                        ? "w-8 bg-blue-600"
+                        ? "w-8 bg-sky-500"
                         : "w-2 bg-slate-300 hover:bg-slate-400"
                     }`}
                     key={item.id}
@@ -511,14 +514,15 @@ function App() {
           ) : null}
         </Panel>
 
-      <footer className="-mt-8 flex flex-col items-center justify-between gap-6 border-t border-slate-200/60 pt-6 pb-2 text-sm font-medium text-slate-500 sm:flex-row">
+        <Reveal>
+          <footer className="-mt-8 flex flex-col items-center justify-between gap-6 border-t border-slate-200/60 pt-6 pb-2 text-sm font-medium text-slate-500 sm:flex-row">
         <div className="flex flex-col items-center gap-3 sm:items-start">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <a href={profile.github} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-slate-900" aria-label="GitHub">
               <BrandGithub size={18} />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-blue-600" aria-label="LinkedIn">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-sky-500" aria-label="LinkedIn">
               <BrandLinkedin size={18} />
             </a>
             <a href={`mailto:${profile.email}`} className="text-slate-400 transition-colors hover:text-slate-900" aria-label="Contact via Email">
@@ -538,6 +542,7 @@ function App() {
             </button>
           </div>
         </footer>
+        </Reveal>
       </div>
     </main>
   );
@@ -575,7 +580,7 @@ function ProfilePhoto({
 
   return (
     <div className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-blue-900/10 ring-1 ring-slate-900/5">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-sky-900/10 ring-1 ring-slate-900/5">
         {!imageFailed ? (
           <img
             alt={name}
@@ -584,7 +589,7 @@ function ProfilePhoto({
             src={profileImage}
           />
         ) : (
-          <div className="grid h-full place-items-center bg-gradient-to-br from-blue-100 via-slate-50 to-blue-50 text-6xl font-bold text-blue-700">
+          <div className="grid h-full place-items-center bg-gradient-to-br from-sky-100 via-slate-50 to-sky-50 text-6xl font-bold text-sky-600">
             {initials}
           </div>
         )}
@@ -656,20 +661,22 @@ function Panel({
   title: string;
 }) {
   return (
-    <section
-      className="scroll-mt-28"
-      id={id}
-    >
-      <div className="mb-7 flex min-h-10 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            {title}
-          </h2>
+    <Reveal>
+      <section
+        className="scroll-mt-28"
+        id={id}
+      >
+        <div className="mb-7 flex min-h-10 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              {title}
+            </h2>
+          </div>
+          {action}
         </div>
-        {action}
-      </div>
-      {children}
-    </section>
+        {children}
+      </section>
+    </Reveal>
   );
 }
 
@@ -699,7 +706,7 @@ function InfoRow({
 }) {
   return (
     <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/60 bg-white/20 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all hover:shadow-xl">
-      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-sky-50 text-sky-500">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
@@ -708,7 +715,7 @@ function InfoRow({
         </p>
         {href ? (
           <a
-            className="mt-1 block break-words text-sm font-semibold leading-5 text-slate-900 hover:text-blue-600"
+            className="mt-1 block break-words text-sm font-semibold leading-5 text-slate-900 hover:text-sky-500"
             href={href}
             rel="noreferrer"
             target="_blank"
@@ -750,6 +757,37 @@ function BrandLinkedin({ size = 24 }: { size?: number }) {
     >
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
+  );
+}
+
+function Reveal({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (ref.current) observer.unobserve(ref.current);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
+      {children}
+    </div>
   );
 }
 
