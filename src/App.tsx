@@ -149,9 +149,9 @@ const initialProfile: Profile = {
 
 const navItems = [
   { href: "#about", icon: <UserRound size={17} />, label: "About Me" },
+  { href: "#skills", icon: <Network size={17} />, label: "Skills" },
   { href: "#projects", icon: <ExternalLink size={17} />, label: "Projects" },
   { href: "#experience", icon: <Sparkles size={17} />, label: "Experience" },
-  { href: "#skills", icon: <Network size={17} />, label: "Tech Stack" },
   { href: "#contact", icon: <Mail size={17} />, label: "Contact" },
 ];
 
@@ -206,7 +206,7 @@ function App() {
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
-        <header className={`sticky top-4 z-50 mx-auto w-full bg-transparent px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
+        <header className={`sticky top-4 z-50 mx-auto w-full bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-sm px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
               <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
