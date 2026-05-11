@@ -161,6 +161,7 @@ function App() {
   const [experiencePage, setExperiencePage] = useState(0);
   const [profileImageFailed, setProfileImageFailed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const experienceContainerRef = useRef<HTMLDivElement>(null);
 
   const stats = useMemo(() => {
     const skillsCount = profile.skills.reduce((acc, group) => acc + group.items.length, 0);
@@ -171,9 +172,51 @@ function App() {
     ];
   }, [profile.projects.length, profile.skills]);
 
-  const currentExperience =
-    profile.experience[experiencePage] ?? profile.experience[0];
   const experiencePageCount = Math.max(1, profile.experience.length);
+
+  const handleExperienceScroll = () => {
+    if (!experienceContainerRef.current) return;
+    const container = experienceContainerRef.current;
+    const scrollPosition = container.scrollLeft;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    Array.from(container.children).forEach((child, index) => {
+      const childElement = child as HTMLElement;
+      const distance = Math.abs(childElement.offsetLeft - scrollPosition);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== experiencePage) {
+      setExperiencePage(closestIndex);
+    }
+  };
+
+  const scrollToExperience = (index: number) => {
+    if (!experienceContainerRef.current) return;
+    const container = experienceContainerRef.current;
+    const child = container.children[index] as HTMLElement;
+    if (child) {
+      container.scrollTo({
+        left: child.offsetLeft,
+        behavior: "smooth",
+      });
+    }
+    setExperiencePage(index);
+  };
+
+  useEffect(() => {
+    if (experiencePageCount <= 1) return;
+    const intervalId = setInterval(() => {
+      scrollToExperience((experiencePage + 1) % experiencePageCount);
+    }, 5000);
+    return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [experiencePage, experiencePageCount]);
 
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(profile));
@@ -442,8 +485,8 @@ function App() {
               <IconButton
                 label="Previous experience page"
                 onClick={() =>
-                  setExperiencePage((current) =>
-                    current === 0 ? experiencePageCount - 1 : current - 1,
+                  scrollToExperience(
+                    experiencePage === 0 ? experiencePageCount - 1 : experiencePage - 1,
                   )
                 }
               >
@@ -452,8 +495,8 @@ function App() {
               <IconButton
                 label="Next experience page"
                 onClick={() =>
-                  setExperiencePage((current) =>
-                    current === experiencePageCount - 1 ? 0 : current + 1,
+                  scrollToExperience(
+                    experiencePage === experiencePageCount - 1 ? 0 : experiencePage + 1,
                   )
                 }
               >
@@ -463,39 +506,49 @@ function App() {
           }
           title="Experience"
         >
-          {currentExperience ? (
+          {profile.experience.length > 0 ? (
             <div>
-              <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/40 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(2deg)_scale(1.02)] sm:p-10">
-                <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-                  <div>
-                    <EditableText
-                      className="text-2xl font-bold text-slate-900 sm:text-3xl"
-                      value={currentExperience.title}
-                    />
-                <div className="mt-2 flex flex-wrap items-center gap-3">
-                  <EditableText
-                    className="text-lg font-medium text-sky-400"
-                    value={currentExperience.company}
-                  />
-                  <span className="text-slate-300">&bull;</span>
-                  <EditableText
-                    className="text-sm font-medium text-slate-600"
-                    value={currentExperience.period}
-                  />
-                </div>
+              <div
+                ref={experienceContainerRef}
+                onScroll={handleExperienceScroll}
+                className="relative flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {profile.experience.map((exp, index) => (
+                  <div key={exp.id} className="min-w-full shrink-0 snap-center">
+                    <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/40 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(2deg)_scale(1.02)] sm:p-10">
+                      <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                        <div>
+                          <EditableText
+                            className="text-2xl font-bold text-slate-900 sm:text-3xl"
+                            value={exp.title}
+                          />
+                          <div className="mt-2 flex flex-wrap items-center gap-3">
+                            <EditableText
+                              className="text-lg font-medium text-sky-400"
+                              value={exp.company}
+                            />
+                            <span className="text-slate-300">&bull;</span>
+                            <EditableText
+                              className="text-sm font-medium text-slate-600"
+                              value={exp.period}
+                            />
+                          </div>
+                        </div>
+                        <div className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-inset ring-slate-200">
+                          {String(index + 1).padStart(2, "0")} /{" "}
+                          {String(profile.experience.length).padStart(2, "0")}
+                        </div>
+                      </div>
+                      <EditableText
+                        className="text-base leading-relaxed text-slate-700"
+                        value={exp.detail}
+                      />
+                    </article>
                   </div>
-                  <div className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-inset ring-slate-200">
-                    {String(experiencePage + 1).padStart(2, "0")} /{" "}
-                    {String(profile.experience.length).padStart(2, "0")}
-                  </div>
-                </div>
-                <EditableText
-                  className="text-base leading-relaxed text-slate-700"
-                  value={currentExperience.detail}
-                />
-              </article>
+                ))}
+              </div>
 
-              <div className="mt-5 flex justify-center gap-2">
+              <div className="mt-2 flex justify-center gap-2">
                 {profile.experience.map((item, index) => (
                   <button
                     aria-label={`Show ${item.title}`}
@@ -505,7 +558,7 @@ function App() {
                         : "w-2 bg-slate-300 hover:bg-slate-400"
                     }`}
                     key={item.id}
-                    onClick={() => setExperiencePage(index)}
+                    onClick={() => scrollToExperience(index)}
                     type="button"
                   />
                 ))}
