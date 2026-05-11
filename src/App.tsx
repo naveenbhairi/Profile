@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  ChevronUp,
   Download,
   ExternalLink,
   Mail,
@@ -195,7 +196,7 @@ function App() {
   };
 
   return (
-    <main className="relative min-h-screen pb-20 text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <main className="relative min-h-screen pb-8 text-slate-900 selection:bg-blue-100 selection:text-blue-900">
       {/* Modern Grid Background with Ambient Glow */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -510,9 +511,19 @@ function App() {
           ) : null}
         </Panel>
 
-        <footer className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200/60 pt-8 pb-4 text-sm font-medium text-slate-500 sm:flex-row">
+      <footer className="-mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-200/60 pt-6 pb-2 text-sm font-medium text-slate-500 sm:flex-row">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-          <p>Built with React & Tailwind CSS.</p>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+            <p>Built with React & Tailwind CSS.</p>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900"
+              type="button"
+            >
+              <ChevronUp size={14} strokeWidth={2.5} />
+              Back to Top
+            </button>
+          </div>
         </footer>
       </div>
     </main>
