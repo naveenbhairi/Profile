@@ -201,20 +201,20 @@ function App() {
       {/* Modern Grid Background with Ambient Glow */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-sky-400 opacity-20 blur-[100px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-blue-400 opacity-20 blur-[120px]"></div>
-        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-sky-300 opacity-20 blur-[100px]"></div>
+        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-sky-300 opacity-20 blur-[100px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-sky-300 opacity-20 blur-[120px]"></div>
+        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-sky-200 opacity-20 blur-[100px]"></div>
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
         <header className={`sticky top-4 z-50 mx-auto w-full bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-sm px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-400 to-blue-300 text-white shadow-md transition-transform group-hover:scale-105">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-300 to-sky-400 text-white shadow-md transition-transform group-hover:scale-105">
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
-                <p className="text-s font-bold uppercase tracking-wider text-sky-500">
+                <p className="text-s font-bold uppercase tracking-wider text-sky-400">
                   {profile.name}
                 </p>
                 <h1 className="truncate text-lg font-bold text-slate-900">
@@ -285,11 +285,11 @@ function App() {
                     value={profile.name}
                   />
                   <EditableText
-                    className="mt-6 bg-gradient-to-r from-sky-500 to-blue-500 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl"
+                    className="mt-6 bg-gradient-to-r from-sky-400 to-sky-500 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl"
                     value={profile.role}
                   />
                   <EditableText
-                    className="mt-6 w-full max-w-2xl text-lg leading-relaxed text-slate-600"
+                    className="mt-6 w-full max-w-2xl text-lg leading-relaxed text-slate-700"
                     value={profile.summary}
                   />
 
@@ -309,7 +309,7 @@ function App() {
                       LinkedIn
                     </AnchorButton>
                     <button
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/20 px-6 py-2.5 text-sm font-extrabold text-slate-700 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/40 hover:text-slate-900 hover:shadow-xl"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/40 px-6 py-2.5 text-sm font-extrabold text-slate-800 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/60 hover:text-slate-900 hover:shadow-xl"
                       onClick={downloadResume}
                       type="button"
                     >
@@ -321,13 +321,13 @@ function App() {
                   <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
                     {stats.map((stat) => (
                       <div
-                        className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]"
+                        className="rounded-2xl border border-white/60 bg-white/40 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]"
                         key={stat.label}
                       >
                         <p className="text-3xl font-extrabold text-slate-900">
                           {stat.value}
                         </p>
-                        <p className="mt-2 text-xs font-bold uppercase tracking-wider text-slate-500">
+                        <p className="mt-2 text-xs font-bold uppercase tracking-wider text-slate-600">
                           {stat.label}
                         </p>
                       </div>
@@ -370,13 +370,13 @@ function App() {
           <div className="flex flex-col gap-6">
             {profile.skills.map((skillGroup) => (
               <div key={skillGroup.category}>
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-500">
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-600">
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {skillGroup.items.map((skill, index) => (
                     <span
-                      className="inline-flex items-center rounded-full bg-sky-50 px-4 py-1.5 text-sm font-medium text-sky-600 ring-1 ring-inset ring-sky-600/10"
+                      className="inline-flex items-center rounded-full bg-sky-50/50 px-4 py-1.5 text-sm font-medium text-sky-500 ring-1 ring-inset ring-sky-500/20"
                       key={`${skill}-${index}`}
                     >
                       {skill}
@@ -394,13 +394,13 @@ function App() {
           <div className="grid gap-6 md:grid-cols-3">
             {profile.highlights.map((highlight, index) => (
               <div
-                className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(4deg)_scale(1.02)]"
+                className="rounded-2xl border border-white/60 bg-white/40 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(4deg)_scale(1.02)]"
                 key={`${highlight}-${index}`}
               >
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-sky-500">
+                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50/50 text-sky-400">
                   <Sparkles size={18} />
                 </div>
-                <p className="text-sm leading-relaxed text-slate-600">{highlight}</p>
+                <p className="text-sm leading-relaxed text-slate-700">{highlight}</p>
               </div>
             ))}
           </div>
@@ -413,20 +413,20 @@ function App() {
           <div className="grid gap-6 md:grid-cols-2">
             {profile.projects.map((project) => (
               <article
-                className="group flex flex-col justify-between rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(-2deg)_scale(1.02)]"
+                className="group flex flex-col justify-between rounded-3xl border border-white/60 bg-white/40 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(-2deg)_scale(1.02)]"
                 key={project.id}
               >
                 <div>
                   <EditableText
-                    className="text-xl font-bold text-slate-900 transition-colors group-hover:text-sky-500"
+                    className="text-xl font-bold text-slate-900 transition-colors group-hover:text-sky-400"
                     value={project.name}
                   />
                   <EditableText
-                    className="mt-2 text-sm font-medium text-sky-500"
+                    className="mt-2 text-sm font-medium text-sky-400"
                     value={project.stack}
                   />
                   <EditableText
-                    className="mt-6 text-sm leading-relaxed text-slate-600"
+                    className="mt-6 text-sm leading-relaxed text-slate-700"
                     value={project.detail}
                   />
                 </div>
@@ -465,7 +465,7 @@ function App() {
         >
           {currentExperience ? (
             <div>
-              <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(2deg)_scale(1.02)] sm:p-10">
+              <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/40 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(2deg)_scale(1.02)] sm:p-10">
                 <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
                     <EditableText
@@ -474,12 +474,12 @@ function App() {
                     />
                 <div className="mt-2 flex flex-wrap items-center gap-3">
                   <EditableText
-                    className="text-lg font-medium text-sky-500"
+                    className="text-lg font-medium text-sky-400"
                     value={currentExperience.company}
                   />
                   <span className="text-slate-300">&bull;</span>
                   <EditableText
-                    className="text-sm font-medium text-slate-500"
+                    className="text-sm font-medium text-slate-600"
                     value={currentExperience.period}
                   />
                 </div>
@@ -490,7 +490,7 @@ function App() {
                   </div>
                 </div>
                 <EditableText
-                  className="text-base leading-relaxed text-slate-600"
+                  className="text-base leading-relaxed text-slate-700"
                   value={currentExperience.detail}
                 />
               </article>
@@ -501,7 +501,7 @@ function App() {
                     aria-label={`Show ${item.title}`}
                     className={`h-2 rounded-full transition-all ${
                       index === experiencePage
-                        ? "w-8 bg-sky-500"
+                        ? "w-8 bg-sky-400"
                         : "w-2 bg-slate-300 hover:bg-slate-400"
                     }`}
                     key={item.id}
@@ -522,7 +522,7 @@ function App() {
             <a href={profile.github} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-slate-900" aria-label="GitHub">
               <BrandGithub size={18} />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-sky-500" aria-label="LinkedIn">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-sky-400" aria-label="LinkedIn">
               <BrandLinkedin size={18} />
             </a>
             <a href={`mailto:${profile.email}`} className="text-slate-400 transition-colors hover:text-slate-900" aria-label="Contact via Email">
@@ -533,6 +533,7 @@ function App() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
             <p>Built with React & Tailwind CSS.</p>
             <button
+              aria-label="Back to top"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900"
               type="button"
@@ -580,7 +581,7 @@ function ProfilePhoto({
 
   return (
     <div className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-sky-900/10 ring-1 ring-slate-900/5">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-sky-800/10 ring-1 ring-slate-900/5">
         {!imageFailed ? (
           <img
             alt={name}
@@ -589,7 +590,7 @@ function ProfilePhoto({
             src={profileImage}
           />
         ) : (
-          <div className="grid h-full place-items-center bg-gradient-to-br from-sky-100 via-slate-50 to-sky-50 text-6xl font-bold text-sky-600">
+          <div className="grid h-full place-items-center bg-gradient-to-br from-sky-50 via-white to-sky-50 text-6xl font-bold text-sky-400">
             {initials}
           </div>
         )}
@@ -616,7 +617,7 @@ function AnchorButton({
       className={`inline-flex min-h-11 items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 ${
         tone === "solid"
           ? "bg-slate-900 text-white hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/20"
-          : "bg-white/20 text-slate-700 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 hover:bg-white/40 hover:text-slate-900 hover:shadow-xl"
+          : "bg-white/40 text-slate-800 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 hover:bg-white/60 hover:text-slate-900 hover:shadow-xl"
       }`}
       href={href}
       rel={isExternal ? "noreferrer" : undefined}
@@ -639,7 +640,8 @@ function IconButton({
 }) {
   return (
     <button
-      className="flex size-10 items-center justify-center rounded-full bg-white/20 text-slate-500 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 transition-all hover:bg-white/40 hover:text-slate-900 hover:shadow-xl"
+      aria-label={label}
+      className="flex size-10 items-center justify-center rounded-full bg-white/40 text-slate-700 ring-1 ring-inset ring-white/60 backdrop-blur-md shadow-lg shadow-slate-200/40 transition-all hover:bg-white/60 hover:text-slate-900 hover:shadow-xl"
       onClick={onClick}
       title={label}
       type="button"
@@ -690,7 +692,16 @@ function EditableText({
   value: string;
 }) {
   const Tag = as;
-  return <Tag className={className}>{value}</Tag>;
+  return (
+    <Tag 
+      className={`${className} cursor-text rounded-md border border-transparent transition-all duration-200 hover:border-sky-200 hover:bg-white/50 focus:border-sky-400 focus:bg-white focus:outline-none`}
+      contentEditable
+      suppressContentEditableWarning
+      title="Click to edit"
+    >
+      {value}
+    </Tag>
+  );
 }
 
 function InfoRow({
@@ -705,17 +716,17 @@ function InfoRow({
   value: string;
 }) {
   return (
-    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/60 bg-white/20 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]">
-      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-sky-50 text-sky-500">
+    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/60 bg-white/40 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]">
+      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-sky-50/50 text-sky-400">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+        <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
           {label}
         </p>
         {href ? (
           <a
-            className="mt-1 block break-words text-sm font-semibold leading-5 text-slate-900 hover:text-sky-500"
+            className="mt-1 block break-words text-sm font-semibold leading-5 text-slate-900 hover:text-sky-400"
             href={href}
             rel="noreferrer"
             target="_blank"
@@ -735,6 +746,7 @@ function InfoRow({
 function BrandGithub({ size = 24 }: { size?: number }) {
   return (
     <svg
+      aria-hidden="true"
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -749,6 +761,7 @@ function BrandGithub({ size = 24 }: { size?: number }) {
 function BrandLinkedin({ size = 24 }: { size?: number }) {
   return (
     <svg
+      aria-hidden="true"
       width={size}
       height={size}
       viewBox="0 0 24 24"
