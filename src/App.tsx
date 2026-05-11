@@ -118,19 +118,20 @@ const initialProfile: Profile = {
       name: "Profile Folio",
       stack: "React.js, TypeScript, Tailwind CSS, LocalStorage",
       detail:
-        "Built a modern and responsive personal portfolio and resume builder using React, TypeScript, and Tailwind CSS, featuring an interactive UI for showcasing skills, projects, and professional experience. Implemented dynamic inline editing with localStorage persistence, enabling real-time content updates without backend integration. Designed a mobile-first glassmorphism-inspired interface with reusable components, integrated Lucide React icons, and added one-click PDF resume download functionality using Vite for optimized performance and development workflow.",
+        "Built a modern and responsive personal portfolio and resume builder using React, TypeScript, and Tailwind CSS, featuring an interactive UI for showcasing skills, projects, and professional experience. Implemented dynamic inline editing with localStorage persistence, enabling real-time content updates. Designed a mobile-first glassmorphism-inspired interface with reusable components and integrated Lucide React icons.",
     },
     {
       id: "project-4",
       name: "Expense Manager",
       stack: "React.js, JavaScript, API integration, Responsive UI",
       detail:
-        "Developed a full-stack Expense Management application using the MERN stack to help users efficiently track income, expenses, and overall financial balance. Implemented features for creating, updating, deleting, and categorizing transactions with real-time balance, income, and expense calculations. Built a month-wise transaction management system with dynamic filtering and responsive UI for seamless user experience. Integrated secure authentication and admin-level access to manage users and monitor transaction data.",
+        "Developed a full-stack Expense Management application using the MERN stack to help users efficiently track income, expenses, and overall financial balance. Implemented features for creating, updating, deleting, and categorizing transactions with real-time balance, income, and expense calculations.Integrated secure authentication and admin-level access to manage users and monitor transaction data.",
     },
   ],
 };
 
 const navItems = [
+  { href: "#about", icon: <UserRound size={17} />, label: "About Me" },
   { href: "#projects", icon: <ExternalLink size={17} />, label: "Projects" },
   { href: "#experience", icon: <Sparkles size={17} />, label: "Experience" },
   { href: "#skills", icon: <Network size={17} />, label: "Tech Stack" },
@@ -188,7 +189,7 @@ function App() {
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
-        <header className={`sticky top-4 z-50 mx-auto w-full max-w-5xl bg-white/80 px-4 py-3 shadow-sm shadow-slate-200/50 ring-1 ring-slate-200 backdrop-blur-md transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
+        <header className={`sticky top-4 z-50 mx-auto w-full bg-white/80 px-4 py-3 shadow-sm shadow-slate-200/50 ring-1 ring-slate-200 backdrop-blur-md transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
               <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
@@ -254,7 +255,7 @@ function App() {
           )}
         </header>
 
-        <section className="pt-4 lg:pt-8" id="contact">
+        <section className="pt-4 lg:pt-8 scroll-mt-28" id="about">
           <div className="px-1 py-2 sm:px-2 lg:py-3">
               <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
                 <div className="min-w-0">
@@ -322,7 +323,7 @@ function App() {
                 />
               </div>
 
-              <div className="mt-16 grid gap-4 sm:grid-cols-3">
+              <div className="mt-16 grid gap-4 sm:grid-cols-3 scroll-mt-28" id="contact">
                 <InfoRow
                   icon={<MapPin size={18} />}
                   label="Location"
@@ -342,41 +343,39 @@ function App() {
           </div>
         </section>
 
-        <section className="grid gap-12 lg:grid-cols-[minmax(300px,0.9fr)_minmax(0,1.4fr)] lg:gap-16">
-          <Panel
-            title="Tech Stack"
-            id="skills"
-          >
-            <div className="flex max-w-4xl flex-wrap gap-3">
-              {profile.skills.map((skill, index) => (
-                <span
-                  className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
-                  key={`${skill}-${index}`}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </Panel>
+        <Panel
+          title="Tech Stack"
+          id="skills"
+        >
+          <div className="flex flex-wrap gap-3">
+            {profile.skills.map((skill, index) => (
+              <span
+                className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                key={`${skill}-${index}`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </Panel>
 
-          <Panel
-            title="Highlights"
-          >
-            <div className="grid gap-6 md:grid-cols-3">
-              {profile.highlights.map((highlight, index) => (
-                <div
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
-                  key={`${highlight}-${index}`}
-                >
-                  <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                    <Sparkles size={18} />
-                  </div>
-                  <p className="text-sm leading-relaxed text-slate-600">{highlight}</p>
+        <Panel
+          title="Highlights"
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            {profile.highlights.map((highlight, index) => (
+              <div
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                key={`${highlight}-${index}`}
+              >
+                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <Sparkles size={18} />
                 </div>
-              ))}
-            </div>
-          </Panel>
-        </section>
+                <p className="text-sm leading-relaxed text-slate-600">{highlight}</p>
+              </div>
+            ))}
+          </div>
+        </Panel>
 
         <Panel
           id="projects"
