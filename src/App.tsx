@@ -139,7 +139,7 @@ const navItems = [
 ];
 
 function App() {
-  const [profile, setProfile] = useState<Profile>(() => loadProfile());
+  const [profile] = useState<Profile>(() => loadProfile());
   const [experiencePage, setExperiencePage] = useState(0);
   const [profileImageFailed, setProfileImageFailed] = useState(false);
 
