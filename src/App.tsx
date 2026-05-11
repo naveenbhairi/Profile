@@ -210,14 +210,14 @@ function App() {
         <header className={`sticky top-4 z-50 mx-auto w-full bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-sm px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-300 to-sky-400 text-white shadow-md transition-transform group-hover:scale-105">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-300 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
                 <p className="text-s font-bold uppercase tracking-wider text-sky-400">
                   {profile.name}
                 </p>
-                <h1 className="truncate text-lg font-bold text-slate-900">
+                <h1 className="truncate text-lg font-semibold text-slate-900">
                   Portfolio
                 </h1>
               </div>
@@ -285,7 +285,7 @@ function App() {
                     value={profile.name}
                   />
                   <EditableText
-                    className="mt-6 bg-gradient-to-r from-sky-400 to-sky-500 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl"
+                    className="mt-6 bg-gradient-to-r from-sky-600 to-indigo-400 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl"
                     value={profile.role}
                   />
                   <EditableText
