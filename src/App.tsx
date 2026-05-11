@@ -319,7 +319,7 @@ function App() {
                   <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
                     {stats.map((stat) => (
                       <div
-                        className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                        className="rounded-2xl border border-slate-200 bg-white/60 p-6 shadow-sm backdrop-blur-sm"
                         key={stat.label}
                       >
                         <p className="text-3xl font-extrabold text-slate-900">
@@ -391,7 +391,7 @@ function App() {
           <div className="grid gap-6 md:grid-cols-3">
             {profile.highlights.map((highlight, index) => (
               <div
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                className="rounded-2xl border border-slate-200 bg-white/60 p-6 shadow-sm backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-md"
                 key={`${highlight}-${index}`}
               >
                 <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
@@ -410,7 +410,7 @@ function App() {
           <div className="grid gap-6 md:grid-cols-2">
             {profile.projects.map((project) => (
               <article
-                className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50"
+                className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white/60 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50"
                 key={project.id}
               >
                 <div>
@@ -462,7 +462,7 @@ function App() {
         >
           {currentExperience ? (
             <div>
-              <article className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all sm:p-10">
+              <article className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/60 p-8 shadow-sm backdrop-blur-sm transition-all sm:p-10">
                 <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
                     <EditableText
@@ -511,8 +511,21 @@ function App() {
           ) : null}
         </Panel>
 
-      <footer className="-mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-200/60 pt-6 pb-2 text-sm font-medium text-slate-500 sm:flex-row">
+      <footer className="-mt-8 flex flex-col items-center justify-between gap-6 border-t border-slate-200/60 pt-6 pb-2 text-sm font-medium text-slate-500 sm:flex-row">
+        <div className="flex flex-col items-center gap-3 sm:items-start">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <a href={profile.github} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-slate-900" aria-label="GitHub">
+              <BrandGithub size={18} />
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-slate-400 transition-colors hover:text-blue-600" aria-label="LinkedIn">
+              <BrandLinkedin size={18} />
+            </a>
+            <a href={`mailto:${profile.email}`} className="text-slate-400 transition-colors hover:text-slate-900" aria-label="Contact via Email">
+              <Mail size={18} />
+            </a>
+          </div>
+        </div>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
             <p>Built with React & Tailwind CSS.</p>
             <button
@@ -685,7 +698,7 @@ function InfoRow({
   value: string;
 }) {
   return (
-    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-md">
+    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-slate-200 bg-white/60 p-5 shadow-sm backdrop-blur-sm transition-all hover:shadow-md">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
         {icon}
       </div>
