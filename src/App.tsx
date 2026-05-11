@@ -3,6 +3,8 @@ import {
   ArrowRight,
   Download,
   ExternalLink,
+  Github,
+  Linkedin,
   Mail,
   MapPin,
   Menu,
@@ -299,14 +301,14 @@ function App() {
                   <div className="mt-8 flex flex-wrap gap-3">
                     <AnchorButton
                       href={profile.github}
-                      icon={<ExternalLink size={17} />}
+                      icon={<Github size={17} />}
                       tone="quiet"
                     >
                       GitHub
                     </AnchorButton>
                     <AnchorButton
                       href={profile.linkedin}
-                      icon={<Network size={17} />}
+                      icon={<Linkedin size={17} />}
                       tone="quiet"
                     >
                       LinkedIn
