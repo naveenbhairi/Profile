@@ -229,15 +229,6 @@ function App() {
                   </a>
                 ))}
               </nav>
-
-              <button
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-md"
-                onClick={downloadResume}
-                type="button"
-              >
-                <Download size={16} />
-                <span>Resume</span>
-              </button>
             </div>
           </div>
 
@@ -259,17 +250,6 @@ function App() {
                   </a>
                 ))}
               </nav>
-              <button
-                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-slate-800 hover:shadow-md"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  downloadResume();
-                }}
-                type="button"
-              >
-                <Download size={16} />
-                <span>Download Resume</span>
-              </button>
             </div>
           )}
         </header>
@@ -308,6 +288,14 @@ function App() {
                     >
                       LinkedIn
                     </AnchorButton>
+                    <button
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/20"
+                      onClick={downloadResume}
+                      type="button"
+                    >
+                      <Download size={17} />
+                      Resume
+                    </button>
                   </div>
 
                   <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
