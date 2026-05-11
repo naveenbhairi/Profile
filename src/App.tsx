@@ -193,8 +193,8 @@ function App() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
         <header className={`sticky top-4 z-50 mx-auto w-full max-w-5xl bg-white/80 px-4 py-3 shadow-sm shadow-slate-200/50 ring-1 ring-slate-200 backdrop-blur-md transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md">
+            <a href="#" className="group flex min-w-0 items-center gap-3">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
@@ -205,7 +205,7 @@ function App() {
                   Portfolio
                 </h1>
               </div>
-            </div>
+            </a>
 
             {/* Mobile Menu Toggle */}
             <button
