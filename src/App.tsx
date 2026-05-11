@@ -27,7 +27,7 @@ type Profile = {
   github: string;
   linkedin: string;
   website: string;
-  skills: string[];
+  skills: { category: string; items: string[] }[];
   highlights: string[];
   experience: Experience[];
   projects: Project[];
@@ -48,7 +48,7 @@ type Project = {
   detail: string;
 };
 
-const storageKey = "profiledata:v3";
+const storageKey = "profiledata:v4";
 
 const initialProfile: Profile = {
   name: "Naveen Bhairi",
@@ -63,23 +63,38 @@ const initialProfile: Profile = {
   linkedin: "https://www.linkedin.com/in/naveen-bhairi-09b60b147/",
   website: "https://naveenbhairi.github.io/Profile",
   skills: [
-    "JavaScript",
-    "React.js",
-    "TypeScript",
-    "Redux Toolkit",
-    "TanStack Query",
-    "React Hook Form",
-    "React Router",
-    "Socket.IO",
-    "Tailwind CSS",
-    "React Testing Library",
-    "Rest APIs",
-    "JWT Authentication",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "Github",
-    "Google Cloud Platform(GCP)",
+    {
+      category: "Frontend",
+      items: [
+        "JavaScript",
+        "TypeScript",
+        "React.js",
+        "Redux Toolkit",
+        "TanStack Query",
+        "React Hook Form",
+        "React Router",
+        "Tailwind CSS",
+        "React Testing Library",
+      ],
+    },
+    {
+      category: "Backend",
+      items: [
+        "Node.js",
+        "Express.js",
+        "Rest APIs",
+        "Socket.IO",
+        "JWT Authentication",
+        "MongoDB",
+      ],
+    },
+    {
+      category: "Tools",
+      items: [
+        "Github",
+        "Google Cloud Platform (GCP)",
+      ],
+    },
   ],
   highlights: [
     "Built live stock and crypto dashboards that handled 5K+ concurrent real-time events with selective WebSocket subscriptions and virtualized rendering.",
@@ -144,14 +159,14 @@ function App() {
   const [profileImageFailed, setProfileImageFailed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const stats = useMemo(
-    () => [
+  const stats = useMemo(() => {
+    const skillsCount = profile.skills.reduce((acc, group) => acc + group.items.length, 0);
+    return [
       { value: "4+", label: "Years experience" },
       { value: `${profile.projects.length}+`, label: "Featured projects" },
-      { value: `${profile.skills.length}+`, label: "Tools mastered" },
-    ],
-    [profile.projects.length, profile.skills.length],
-  );
+      { value: `${skillsCount}+`, label: "Tools mastered" },
+    ];
+  }, [profile.projects.length, profile.skills]);
 
   const currentExperience =
     profile.experience[experiencePage] ?? profile.experience[0];
@@ -347,14 +362,23 @@ function App() {
           title="Tech Stack"
           id="skills"
         >
-          <div className="flex flex-wrap gap-3">
-            {profile.skills.map((skill, index) => (
-              <span
-                className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
-                key={`${skill}-${index}`}
-              >
-                {skill}
-              </span>
+          <div className="flex flex-col gap-6">
+            {profile.skills.map((skillGroup) => (
+              <div key={skillGroup.category}>
+                <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-500">
+                  {skillGroup.category}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {skillGroup.items.map((skill, index) => (
+                    <span
+                      className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                      key={`${skill}-${index}`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </Panel>
@@ -443,10 +467,16 @@ function App() {
                       className="text-2xl font-bold text-slate-900 sm:text-3xl"
                       value={currentExperience.title}
                     />
-                    <EditableText
-                      className="mt-2 text-lg font-medium text-blue-600"
-                      value={currentExperience.company}
-                    />
+                <div className="mt-2 flex flex-wrap items-center gap-3">
+                  <EditableText
+                    className="text-lg font-medium text-blue-600"
+                    value={currentExperience.company}
+                  />
+                  <EditableText
+                    className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                    value={currentExperience.period}
+                  />
+                </div>
                   </div>
                   <div className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-inset ring-slate-200">
                     {String(experiencePage + 1).padStart(2, "0")} /{" "}
@@ -457,12 +487,6 @@ function App() {
                   className="text-base leading-relaxed text-slate-600"
                   value={currentExperience.detail}
                 />
-                <div className="mt-8">
-                  <EditableText
-                    className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
-                    value={currentExperience.period}
-                  />
-                </div>
               </article>
 
               <div className="mt-5 flex justify-center gap-2">
