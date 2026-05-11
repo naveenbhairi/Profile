@@ -210,7 +210,7 @@ function App() {
         <header className={`sticky top-4 z-50 mx-auto w-full bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-sm px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
-              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-400 to-blue-500 text-white shadow-md transition-transform group-hover:scale-105">
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-400 to-blue-300 text-white shadow-md transition-transform group-hover:scale-105">
                 <UserRound size={24} strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
@@ -285,7 +285,7 @@ function App() {
                     value={profile.name}
                   />
                   <EditableText
-                    className="mt-6 bg-gradient-to-r from-sky-500 to-blue-500 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl"
+                    className="mt-6 bg-gradient-to-r from-sky-500 to-blue-500 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl"
                     value={profile.role}
                   />
                   <EditableText
@@ -321,7 +321,7 @@ function App() {
                   <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
                     {stats.map((stat) => (
                       <div
-                        className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:opacity-80 hover:shadow-xl"
+                        className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]"
                         key={stat.label}
                       >
                         <p className="text-3xl font-extrabold text-slate-900">
@@ -394,7 +394,7 @@ function App() {
           <div className="grid gap-6 md:grid-cols-3">
             {profile.highlights.map((highlight, index) => (
               <div
-                className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:opacity-80 hover:shadow-xl hover:shadow-slate-200/50"
+                className="rounded-2xl border border-white/60 bg-white/20 p-6 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(4deg)_scale(1.02)]"
                 key={`${highlight}-${index}`}
               >
                 <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-sky-500">
@@ -413,7 +413,7 @@ function App() {
           <div className="grid gap-6 md:grid-cols-2">
             {profile.projects.map((project) => (
               <article
-                className="group flex flex-col justify-between rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50"
+                className="group flex flex-col justify-between rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:shadow-slate-200/50 hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(-2deg)_scale(1.02)]"
                 key={project.id}
               >
                 <div>
@@ -465,7 +465,7 @@ function App() {
         >
           {currentExperience ? (
             <div>
-              <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:opacity-80 hover:shadow-xl sm:p-10">
+              <article className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/20 p-8 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(2deg)_rotateY(2deg)_scale(1.02)] sm:p-10">
                 <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
                     <EditableText
@@ -705,7 +705,7 @@ function InfoRow({
   value: string;
 }) {
   return (
-    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/60 bg-white/20 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:opacity-80 hover:shadow-xl">
+    <div className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/60 bg-white/20 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-xl transition-all duration-300 hover:opacity-80 hover:shadow-2xl hover:[transform:perspective(1000px)_translateY(-4px)_rotateX(4deg)_rotateY(-4deg)_scale(1.02)]">
       <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-sky-50 text-sky-500">
         {icon}
       </div>
