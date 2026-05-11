@@ -92,6 +92,7 @@ const initialProfile: Profile = {
       category: "Tools",
       items: [
         "Github",
+        "Postman",
         "Google Cloud Platform (GCP)",
       ],
     },
@@ -472,8 +473,9 @@ function App() {
                     className="text-lg font-medium text-blue-600"
                     value={currentExperience.company}
                   />
+                  <span className="text-slate-300">&bull;</span>
                   <EditableText
-                    className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                    className="text-sm font-medium text-slate-500"
                     value={currentExperience.period}
                   />
                 </div>
