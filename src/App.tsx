@@ -206,7 +206,7 @@ function App() {
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
-        <header className={`sticky top-4 z-50 mx-auto w-full bg-white/20 px-4 py-3 shadow-lg shadow-slate-200/40 ring-1 ring-white/60 backdrop-blur-xl transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
+        <header className={`sticky top-4 z-50 mx-auto w-full bg-transparent px-4 py-3 transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
           <div className="flex items-center justify-between">
             <a href="#" className="group flex min-w-0 items-center gap-3">
               <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md transition-transform group-hover:scale-105">
@@ -233,7 +233,7 @@ function App() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex lg:items-center lg:gap-3">
-              <nav className="flex items-center gap-1 rounded-full border border-white/40 bg-white/10 p-1 shadow-sm backdrop-blur-md">
+              <nav className="flex items-center gap-1">
                 {navItems.map((item) => (
                   <a
                     className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium text-slate-600 transition-all hover:bg-slate-900 hover:text-white"
@@ -253,7 +253,7 @@ function App() {
           {/* Mobile Nav Content */}
           {isMobileMenuOpen && (
             <div className="mt-4 flex flex-col gap-4 pb-2 lg:hidden">
-              <nav className="flex flex-col gap-2 rounded-2xl border border-white/40 bg-white/10 p-2 shadow-sm backdrop-blur-md">
+              <nav className="flex flex-col gap-2">
                 {navItems.map((item) => (
                   <a
                     className="group inline-flex h-11 items-center gap-3 rounded-xl px-4 text-sm font-medium text-slate-600 transition-all hover:bg-slate-900 hover:text-white"
