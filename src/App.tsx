@@ -509,6 +509,11 @@ function App() {
             </div>
           ) : null}
         </Panel>
+
+        <footer className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200/60 pt-8 pb-4 text-sm font-medium text-slate-500 sm:flex-row">
+          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <p>Built with React & Tailwind CSS.</p>
+        </footer>
       </div>
     </main>
   );
