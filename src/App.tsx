@@ -5,10 +5,12 @@ import {
   ExternalLink,
   Mail,
   MapPin,
+  Menu,
   Network,
   Phone,
   Sparkles,
   UserRound,
+  X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import profileImage from "./profile-photo.jpg";
@@ -142,6 +144,7 @@ function App() {
   const [profile] = useState<Profile>(() => loadProfile());
   const [experiencePage, setExperiencePage] = useState(0);
   const [profileImageFailed, setProfileImageFailed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const stats = useMemo(
     () => [
@@ -188,24 +191,34 @@ function App() {
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
-        <header className="sticky top-4 z-50 mx-auto w-full max-w-5xl rounded-full bg-white/80 px-4 py-3 shadow-sm shadow-slate-200/50 ring-1 ring-slate-200 backdrop-blur-md">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <header className={`sticky top-4 z-50 mx-auto w-full max-w-5xl bg-white/80 px-4 py-3 shadow-sm shadow-slate-200/50 ring-1 ring-slate-200 backdrop-blur-md transition-all ${isMobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}>
+          <div className="flex items-center justify-between">
             <div className="flex min-w-0 items-center gap-3">
-            <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md">
-              <UserRound size={24} strokeWidth={2.5} />
+              <div className="grid size-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md">
+                <UserRound size={24} strokeWidth={2.5} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+                  {profile.name}
+                </p>
+                <h1 className="truncate text-lg font-extrabold text-slate-900">
+                  Portfolio
+                </h1>
+              </div>
             </div>
-            <div className="min-w-0">
-              <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
-                {profile.name}
-              </p>
-              <h1 className="truncate text-lg font-extrabold text-slate-900">
-                Portfolio
-              </h1>
-            </div>
-          </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:justify-end">
-              <nav className="flex items-center gap-1 overflow-x-auto rounded-full border border-slate-200 bg-white/50 p-1">
+            {/* Mobile Menu Toggle */}
+            <button
+              className="p-2 text-slate-600 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex lg:items-center lg:gap-3">
+              <nav className="flex items-center gap-1 rounded-full border border-slate-200 bg-white/50 p-1">
                 {navItems.map((item) => (
                   <a
                     className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full px-4 text-sm font-medium text-slate-600 transition-all hover:bg-slate-900 hover:text-white"
@@ -226,10 +239,42 @@ function App() {
                 type="button"
               >
                 <Download size={16} />
-                <span className="hidden sm:inline">Resume</span>
+                <span>Resume</span>
               </button>
             </div>
           </div>
+
+          {/* Mobile Nav Content */}
+          {isMobileMenuOpen && (
+            <div className="mt-4 flex flex-col gap-4 pb-2 lg:hidden">
+              <nav className="flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white/50 p-2">
+                {navItems.map((item) => (
+                  <a
+                    className="group inline-flex h-11 items-center gap-3 rounded-xl px-4 text-sm font-medium text-slate-600 transition-all hover:bg-slate-900 hover:text-white"
+                    href={item.href}
+                    key={item.label}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="text-slate-400 transition-colors group-hover:text-white/80">
+                      {item.icon}
+                    </span>
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+              <button
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-slate-800 hover:shadow-md"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  downloadResume();
+                }}
+                type="button"
+              >
+                <Download size={16} />
+                <span>Download Resume</span>
+              </button>
+            </div>
+          )}
         </header>
 
         <section className="pt-4 lg:pt-8" id="contact">
