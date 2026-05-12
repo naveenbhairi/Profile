@@ -49,7 +49,7 @@ type Project = {
   detail: string;
 };
 
-const storageKey = "profiledata:v5";
+const storageKey = "profiledata:v6";
 
 const initialProfile: Profile = {
   name: "Naveen Bhairi",
