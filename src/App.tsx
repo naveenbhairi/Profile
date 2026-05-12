@@ -240,13 +240,13 @@ function App() {
   };
 
   return (
-    <main className="relative min-h-screen pb-8 text-slate-900 selection:bg-sky-100 selection:text-sky-900">
+    <main className="relative min-h-screen pb-8 text-slate-900 selection:bg-rose-200 selection:text-rose-900">
       {/* Modern Grid Background with Ambient Glow */}
-      <div className="fixed inset-0 -z-10 h-full w-full bg-slate-50">
+      <div className="fixed inset-0 -z-10 h-full w-full bg-pink-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-sky-300 opacity-20 blur-[100px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-sky-300 opacity-20 blur-[120px]"></div>
-        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-sky-200 opacity-20 blur-[100px]"></div>
+        <div className="absolute left-0 right-0 top-[-10%] -z-10 m-auto h-[310px] w-[310px] rounded-full bg-rose-400 opacity-20 blur-[100px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] -z-10 h-[400px] w-[400px] rounded-full bg-violet-400 opacity-20 blur-[120px]"></div>
+        <div className="absolute right-[-5%] top-[20%] -z-10 h-[250px] w-[250px] rounded-full bg-amber-300 opacity-20 blur-[100px]"></div>
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 py-8 sm:px-6 lg:px-8">
