@@ -332,7 +332,7 @@ function App() {
                     value={profile.role}
                   />
                   <EditableText
-                    className="mt-6 w-full max-w-2xl text-lg leading-relaxed text-green-800"
+                    className="mt-6 w-full max-w-2xl text-lg leading-relaxed text-amber-900"
                     value={profile.summary}
                   />
 
@@ -443,7 +443,7 @@ function App() {
                 <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-sky-50/50 text-sky-400">
                   <Sparkles size={18} />
                 </div>
-                <p className="text-sm leading-relaxed text-green-800">{highlight}</p>
+                <p className="text-sm leading-relaxed text-amber-900">{highlight}</p>
               </div>
             ))}
           </div>
@@ -469,7 +469,7 @@ function App() {
                     value={project.stack}
                   />
                   <EditableText
-                    className="mt-6 text-sm leading-relaxed text-green-800"
+                    className="mt-6 text-sm leading-relaxed text-amber-900"
                     value={project.detail}
                   />
                 </div>
@@ -540,7 +540,7 @@ function App() {
                         </div>
                       </div>
                       <EditableText
-                    className="text-base leading-relaxed text-green-800"
+                    className="text-base leading-relaxed text-amber-900"
                         value={exp.detail}
                       />
                     </article>
